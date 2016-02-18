@@ -1,0 +1,339 @@
+\documentclass[11pt,letterpaper]{article}%letterpaper
+% Choose language
+\usepackage[english]{babel}
+
+% Encoding options
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+% Math and special stuff packages
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bigints}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{empheq}
+% for listing with letters and changing number sizes
+\usepackage{enumitem}
+%Use the following as arguments
+%\begin{enumerate}[label=\large{\textbf{\arabic*.}}]
+%\begin{enumerate}[label=\large{\textbf{\alph*.}}]
+
+% Selecting margins
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+
+
+%%% NEW COMMANDS
+%For boxing subequations in empheq environment 
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+
+%Absolute Value
+\newcommand\abs[1]{\left|#1\right|}
+
+%%Inner product
+\newcommand\inn[2]{\langle#1,#2\rangle}
+
+
+
+%%%% CHANGING LABELS STYLE - may be used inside the document
+%Sections labeled with roman numerals
+\renewcommand\thesection{\Roman{section}}
+%Equations labeled with roman numerals
+%\renewcommand\theequation{\roman{equation}}
+%Change equation counter
+%\setcounter{equation}{4}
+
+% Griffiths options - change false for true
+\iffalse
+% For setting r as in Griffiths
+%\usepackage{graphicx}
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \rcurs$}}}
+\def\hbrcurs{{\mbox{$\hat \brcurs$}}}
+\fi
+% Declare hat vectors
+% ijk
+\newcommand{\ihat}{\hat{\textbf{\i}}}
+\newcommand{\jhat}{\hat{\textbf{\j}}}
+\newcommand{\khat}{\hat{\textbf{k}}}
+% xyzs
+\newcommand{\xhat}{\hat{\textbf{x}}}
+\newcommand{\yhat}{\hat{\textbf{y}}}
+\newcommand{\zhat}{\hat{\textbf{z}}}
+\newcommand{\shat}{\hat{\textbf{s}}}
+% r theta phi
+\newcommand{\rhat}{\hat{\textbf{r}}}
+\newcommand{\thhat}{\hat{\boldsymbol{\theta}}}
+\newcommand{\phihat}{\hat{\boldsymbol{\phi}}}
+
+
+% Differentials
+\usepackage{upgreek}
+\newcommand{\dl}{d\mathrm{\textbf{l}}}
+\newcommand{\da}{d\mathrm{\textbf{a}}}
+\newcommand{\dv}{d\uptau}
+
+
+% Document information
+\title{\textbf{Quantum Mechanics I - HW2}}
+\author{Diego Ramírez Milano (201214691)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+The linear space of finite dimension (vectors) on which matrices act as linear operators is an example of a mathematical space (Hilbert Space) o which some Quantum Mechanics can be done.
+
+\begin{enumerate}[label=\Large{\textbf{\arabic*.}}]\setcounter{enumi}{4}
+
+\item{
+Let $x$ and $\varphi$ be n-dimensional vectors (complex). We define the inner product $\inn{x}{\varphi}$ as
+
+\begin{equation}
+\label{inn}
+\inn{x}{\varphi} \equiv x^\dag \varphi = \sum_i x_i^*\varphi_i
+\end{equation}
+
+Where $x_i$ and $\varphi_i$  are components of the vectors. Prove the following properties which $\inn{x}{\varphi}$ shares with the inner product defined for functions.
+
+\begin{subequations}
+\begin{empheq}{align}
+	\label{inn1}\tag{\textit{i}}
+	\inn{x}{x} &\geq 0\\
+	\label{inn2}\tag{\textit{ii}}
+	\inn{x}{x} &= 0 \iff x = 0\\
+	\label{inn3}\tag{\textit{iii}}
+	\inn{x}{\varphi} &= \inn{\varphi}{x}^*\\
+	\label{inn4}\tag{\textit{iv}}
+	\inn{x}{a\varphi} &= a\inn{x}{\varphi}\\
+	\label{inn5}\tag{\textit{v}}
+	\inn{ax}{\varphi} &= a^*\inn{x}{\varphi}\\
+	\label{inn6}\tag{\textit{vi}}
+	\inn{ax}{\varphi} &= \inn{x}{a^*\varphi}\\
+	\label{inn7}\tag{\textit{vii}}
+	\inn{x_1 + x_2}{\varphi} &= \inn{x_1}{\varphi} + \inn{x_2}{\varphi}
+\end{empheq}
+\end{subequations}
+
+\begin{enumerate}[label=Proof for \textit{\roman*.}]
+\item{
+\begin{equation}
+\label{inn1p}\tag{\textit{i proof}}
+\begin{split}
+\inn{x}{x} = \sum_i x_i^*x_i = \sum_i \abs{x_i}^2\\
+\text{Since }\abs{x} \geq 0 \to \sum_i \abs{x_i}^2 \geq 0\\
+\text{It follows } \inn{x}{x} \geq 0
+\end{split}
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn2p}\tag{\textit{ii proof}}
+\begin{split}
+\inn{x}{x} = \sum_i \abs{x_i}^2\text{ but } \abs{x} = 0 \iff x = 0 \\
+\text{Then it follows }\inn{x}{x} = 0 \iff x = 0
+\end{split}
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn3p}\tag{\textit{iii proof}}
+\inn{x}{\varphi} = \sum_i x_i^*\varphi_i = \left(\sum_i x_i^{**}\varphi_i^*\right)^* = \left(\sum_i x_i\varphi_i^*\right)^* = \left(\sum_i \varphi_i^*x_i\right)^* = \inn{\varphi}{x}^*
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn4p}\tag{\textit{iv proof}}
+\inn{x}{a\varphi} = \sum_i x_i^*a\varphi_i = a\sum_i x_i^*\varphi_i = a\inn{x}{\varphi}
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn5p}\tag{\textit{v proof}}
+\inn{ax}{\varphi} = \sum_i (ax_i)^*\varphi_i = \sum_i a^*x_i^*\varphi_i = a^*\sum_i x_i^*\varphi_i = a^*\inn{x}{\varphi}
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn6p}\tag{\textit{vi proof}}
+\inn{ax}{\varphi} = \sum_i (ax_i)^*\varphi_i = \sum_i a^*x_i^*\varphi_i = \sum_i x_i^*(a^*\varphi_i) = \inn{x}{a^*\varphi}
+\end{equation}
+}
+
+\item{
+\begin{equation}
+\label{inn7p}\tag{\textit{vii proof}}
+\begin{split}
+\inn{x_1 + x_2}{\varphi} &= \sum_i(x_1 + x_2)^*\varphi = \sum_i(x_{1i}^* + x_{2i}^*)\varphi = \sum_i\left( x_{1i}^*\varphi_i + x_{2i}^*\varphi_i \right)\\
+&= \sum_i x_{1i}^*\varphi + \sum_i x_{2i}^*\varphi = \inn{x_1}{\varphi} + \inn{x_2}{\varphi}
+\end{split}
+\end{equation}
+}
+\end{enumerate}
+\setcounter{equation}{1}
+}
+
+\item{
+Let us write from now on in two dimensional vector space. Let $M$ be
+
+\begin{equation}
+\label{matrixM}
+M = 
+\begin{pmatrix}
+m_1 & a\\
+a^* & m_2
+\end{pmatrix}
+\text{, with } m_{i=1,2} \in \mathbb{R}
+\end{equation}
+
+\begin{enumerate}[label=\textit{\roman*.}]
+\item{
+Prove that $M = M^\dag$ ($M$ is hermitian) and $M^\dag = (M^T)^*$
+\begin{equation}
+\label{proofM}
+M^\dag =
+\begin{pmatrix}
+m_1 & a^*\\
+a & m_2
+\end{pmatrix}^* =
+\begin{pmatrix}
+m_1 & a\\
+a^* & m_2
+\end{pmatrix} = M
+\end{equation}
+}
+
+\item{
+Find the eigenvalues $\lambda_i$ of $Mx=\lambda x$, where $x$ is a 2-dimensional vector.
+
+\renewcommand\theequation{4.\alph{equation}}
+\setcounter{equation}{0}
+For any given square $2\times2$ of the form
+\begin{equation}
+\label{matrixA}
+M = 
+\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}
+\end{equation}
+
+We can define the eigenvalues and eigenvectors, respectively, as follows
+
+\begin{equation}
+\label{eigenval}
+\lambda_i = \frac{a+d}{2} \pm \sqrt{\frac{(a+d)^2}{4} - \left( ad - bc \right)}
+\end{equation}
+
+\begin{equation}
+\label{eigenvec}
+x_i = 
+\begin{pmatrix}
+\lambda_i - d\\
+c
+\end{pmatrix}
+\end{equation}
+
+Now using \eqref{eigenval} we find the eigenvalues for $M$ to be
+\renewcommand\theequation{\arabic{equation}}
+\setcounter{equation}{4}
+
+\begin{equation}
+\label{eigenvalues}
+\begin{split}
+\lambda_1 =& \frac{m_1 + m_2}{2} + \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)}\\
+\lambda_2 =& \frac{m_1 + m_2}{2} - \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)}
+\end{split}
+\end{equation}
+}
+
+\item{
+Prove that $\lambda_i$ are real
+
+\begin{equation}
+\label{realeigenval1}
+\begin{split}
+\lambda\inn{x}{x} =& \inn{x}{\lambda x}\text{ from relation \eqref{inn4}}\\
+=& \inn{x}{Mx}\text{ from definition of eigenvalues and eigenvectors}\\
+=& \inn{M^*x}{x}\text{ from relation \eqref{inn6}}\\
+=& \inn{Mx}{x}\text{ from \eqref{proofM}}\\
+=& \inn{\lambda x}{x}\text{ from definition of eigenvalues and eigenvectors}\\
+=& \lambda^*\inn{x}{x}\text{ from relation \eqref{inn5}}
+\end{split}
+\end{equation}
+
+Finally from \eqref{realeigenval1} and taking into account \eqref{inn1p} we get
+
+\begin{equation}
+\label{realeigenval2}
+\lambda\inn{x}{x} = \lambda^*\inn{x}{x} \to \lambda = \lambda^* \to \lambda \in \mathbb{R}
+\end{equation}
+}
+
+\item{
+Find the eigenvectors $x_i$ (each corresponding to $\lambda_i$) such that are normalized to 1.
+
+Again using \eqref{eigenvec} we find the eigenvectors of $M$ to be
+
+\begin{equation}
+\label{eigenvectors}
+\begin{split}
+x_1 =& 
+\begin{pmatrix}
+\frac{m_1 + m_2}{2} + \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)} - m_2\\
+a^*
+\end{pmatrix}\\
+x_2 =&
+\begin{pmatrix}
+\frac{m_1 + m_2}{2} - \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)} - m_2\\
+a^*
+\end{pmatrix}
+\end{split}
+\end{equation}
+
+The above vectors not normalized, so now we need to find each vector's norm and then divide them by the norm
+
+\begin{equation}
+\label{normV}
+ghb
+\end{equation}
+
+}
+
+\item{
+Prove that $x_i^*x_j\ (i\neq j)$ is zero, meaning the eigenvectors are orthonormal.
+}
+
+\end{enumerate}
+
+}
+
+
+\end{enumerate}
+
+
+
+\end{document}
+
+%%%%%%%%% EXAMPLES %%%%%%%%%
+
+%%%Example of boxed subequation%%%
+%\begin{subequations}
+%\begin{empheq}[box=\widefbox]{align}
+%	\label{cos1}
+%	&\cos(a) = \cos(b)\cos(c) + \sin(b)\sin(c)\cos(A) \\
+%	\label{cos2}
+%	&\cos(b) = \cos(a)\cos(c) \\
+%	\label{cos3}
+%	&\cos(c) = \cos(a)\cos(b) + \sin(a)\sin(b)\cos(C)
+%\end{empheq}
+%\end{subequations}
