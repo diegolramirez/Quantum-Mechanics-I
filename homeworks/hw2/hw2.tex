@@ -76,6 +76,9 @@
 \newcommand{\dl}{d\mathrm{\textbf{l}}}
 \newcommand{\da}{d\mathrm{\textbf{a}}}
 \newcommand{\dv}{d\uptau}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand{\dy}{\mathrm{d}y}
+\newcommand{\dz}{\mathrm{d}z}
 
 
 % Document information
@@ -86,7 +89,7 @@
 \begin{document}
 \maketitle
 
-The linear space of finite dimension (vectors) on which matrices act as linear operators is an example of a mathematical space (Hilbert Space) o which some Quantum Mechanics can be done.
+The linear space of finite dimension (vectors) on which matrices act as linear operators is an example of a mathematical space (Hilbert Space) on which some Quantum Mechanics can be done.
 
 \begin{enumerate}[label=\Large{\textbf{\arabic*.}}]\setcounter{enumi}{4}
 
@@ -98,7 +101,7 @@ Let $x$ and $\varphi$ be n-dimensional vectors (complex). We define the inner pr
 \inn{x}{\varphi} \equiv x^\dag \varphi = \sum_i x_i^*\varphi_i
 \end{equation}
 
-Where $x_i$ and $\varphi_i$  are components of the vectors. Prove the following properties which $\inn{x}{\varphi}$ shares with the inner product defined for functions.
+Where $x_i$ and $\varphi_i$  are components of the vectors. Prove the following properties which $\inn{x}{\varphi}$ shares with the inner product defined for functions $(f\circ g) = \bigintssss_{-\infty}^{\infty}\dx f^*g$.
 
 \begin{subequations}
 \begin{empheq}{align}
@@ -119,66 +122,6 @@ Where $x_i$ and $\varphi_i$  are components of the vectors. Prove the following 
 \end{empheq}
 \end{subequations}
 
-\begin{enumerate}[label=Proof for \textit{\roman*.}]
-\item{
-\begin{equation}
-\label{inn1p}\tag{\textit{i proof}}
-\begin{split}
-\inn{x}{x} = \sum_i x_i^*x_i = \sum_i \abs{x_i}^2\\
-\text{Since }\abs{x} \geq 0 \to \sum_i \abs{x_i}^2 \geq 0\\
-\text{It follows } \inn{x}{x} \geq 0
-\end{split}
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn2p}\tag{\textit{ii proof}}
-\begin{split}
-\inn{x}{x} = \sum_i \abs{x_i}^2\text{ but } \abs{x} = 0 \iff x = 0 \\
-\text{Then it follows }\inn{x}{x} = 0 \iff x = 0
-\end{split}
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn3p}\tag{\textit{iii proof}}
-\inn{x}{\varphi} = \sum_i x_i^*\varphi_i = \left(\sum_i x_i^{**}\varphi_i^*\right)^* = \left(\sum_i x_i\varphi_i^*\right)^* = \left(\sum_i \varphi_i^*x_i\right)^* = \inn{\varphi}{x}^*
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn4p}\tag{\textit{iv proof}}
-\inn{x}{a\varphi} = \sum_i x_i^*a\varphi_i = a\sum_i x_i^*\varphi_i = a\inn{x}{\varphi}
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn5p}\tag{\textit{v proof}}
-\inn{ax}{\varphi} = \sum_i (ax_i)^*\varphi_i = \sum_i a^*x_i^*\varphi_i = a^*\sum_i x_i^*\varphi_i = a^*\inn{x}{\varphi}
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn6p}\tag{\textit{vi proof}}
-\inn{ax}{\varphi} = \sum_i (ax_i)^*\varphi_i = \sum_i a^*x_i^*\varphi_i = \sum_i x_i^*(a^*\varphi_i) = \inn{x}{a^*\varphi}
-\end{equation}
-}
-
-\item{
-\begin{equation}
-\label{inn7p}\tag{\textit{vii proof}}
-\begin{split}
-\inn{x_1 + x_2}{\varphi} &= \sum_i(x_1 + x_2)^*\varphi = \sum_i(x_{1i}^* + x_{2i}^*)\varphi = \sum_i\left( x_{1i}^*\varphi_i + x_{2i}^*\varphi_i \right)\\
-&= \sum_i x_{1i}^*\varphi + \sum_i x_{2i}^*\varphi = \inn{x_1}{\varphi} + \inn{x_2}{\varphi}
-\end{split}
-\end{equation}
-}
-\end{enumerate}
 \setcounter{equation}{1}
 }
 
@@ -197,116 +140,20 @@ a^* & m_2
 
 \begin{enumerate}[label=\textit{\roman*.}]
 \item{
-Prove that $M = M^\dag$ ($M$ is hermitian) and $M^\dag = (M^T)^*$
-\begin{equation}
-\label{proofM}
-M^\dag =
-\begin{pmatrix}
-m_1 & a^*\\
-a & m_2
-\end{pmatrix}^* =
-\begin{pmatrix}
-m_1 & a\\
-a^* & m_2
-\end{pmatrix} = M
-\end{equation}
+Prove that $M = M^\dag$ ($M$ is hermitian).
 }
 
 \item{
 Find the eigenvalues $\lambda_i$ of $Mx=\lambda x$, where $x$ is a 2-dimensional vector.
-
-\renewcommand\theequation{4.\alph{equation}}
-\setcounter{equation}{0}
-For any given square $2\times2$ of the form
-\begin{equation}
-\label{matrixA}
-M = 
-\begin{pmatrix}
-a & b\\
-c & d
-\end{pmatrix}
-\end{equation}
-
-We can define the eigenvalues and eigenvectors, respectively, as follows
-
-\begin{equation}
-\label{eigenval}
-\lambda_i = \frac{a+d}{2} \pm \sqrt{\frac{(a+d)^2}{4} - \left( ad - bc \right)}
-\end{equation}
-
-\begin{equation}
-\label{eigenvec}
-x_i = 
-\begin{pmatrix}
-\lambda_i - d\\
-c
-\end{pmatrix}
-\end{equation}
-
-Now using \eqref{eigenval} we find the eigenvalues for $M$ to be
-\renewcommand\theequation{\arabic{equation}}
-\setcounter{equation}{4}
-
-\begin{equation}
-\label{eigenvalues}
-\begin{split}
-\lambda_1 =& \frac{m_1 + m_2}{2} + \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)}\\
-\lambda_2 =& \frac{m_1 + m_2}{2} - \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)}
-\end{split}
-\end{equation}
 }
 
 \item{
-Prove that $\lambda_i$ are real
-
-\begin{equation}
-\label{realeigenval1}
-\begin{split}
-\lambda\inn{x}{x} =& \inn{x}{\lambda x}\text{ from relation \eqref{inn4}}\\
-=& \inn{x}{Mx}\text{ from definition of eigenvalues and eigenvectors}\\
-=& \inn{M^*x}{x}\text{ from relation \eqref{inn6}}\\
-=& \inn{Mx}{x}\text{ from \eqref{proofM}}\\
-=& \inn{\lambda x}{x}\text{ from definition of eigenvalues and eigenvectors}\\
-=& \lambda^*\inn{x}{x}\text{ from relation \eqref{inn5}}
-\end{split}
-\end{equation}
-
-Finally from \eqref{realeigenval1} and taking into account \eqref{inn1p} we get
-
-\begin{equation}
-\label{realeigenval2}
-\lambda\inn{x}{x} = \lambda^*\inn{x}{x} \to \lambda = \lambda^* \to \lambda \in \mathbb{R}
-\end{equation}
+Prove that $\lambda_i$ are real.
 }
 
 \item{
-Find the eigenvectors $x_i$ (each corresponding to $\lambda_i$) such that are normalized to 1.
-
-Again using \eqref{eigenvec} we find the eigenvectors of $M$ to be
-
-\begin{equation}
-\label{eigenvectors}
-\begin{split}
-x_1 =& 
-\begin{pmatrix}
-\frac{m_1 + m_2}{2} + \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)} - m_2\\
-a^*
-\end{pmatrix}\\
-x_2 =&
-\begin{pmatrix}
-\frac{m_1 + m_2}{2} - \sqrt{\frac{(m_1 + m_2)^2}{4} - \left( m_1m_2 - \abs{a}^2 \right)} - m_2\\
-a^*
-\end{pmatrix}
-\end{split}
-\end{equation}
-
-The above vectors not normalized, so now we need to find each vector's norm and then divide them by the norm
-
-\begin{equation}
-\label{normV}
-ghb
-\end{equation}
-
+Find the eigenvectors $x_i$ (corresponding to $\lambda_i$) such that are normalized to 1 $(x^\dag 
+x = 1)$.
 }
 
 \item{
@@ -314,6 +161,37 @@ Prove that $x_i^*x_j\ (i\neq j)$ is zero, meaning the eigenvectors are orthonorm
 }
 
 \end{enumerate}
+
+\item{
+Let $a$ be now real. Let $U$ be delivered as follows
+\begin{equation}
+\label{U}
+U =
+\begin{pmatrix}
+\cos(\theta) & \sin(\theta)\\
+-\sin(\theta) & \cos(\theta)
+\end{pmatrix}
+\end{equation}
+
+\begin{enumerate}[label=\textit{\roman*.}]
+\item{
+Prove that $U$ is unitary $(U^\dag U = UU^\dag = 1)$.
+}
+
+\item{
+Make a transformation ($M$ from 6.)
+\begin{equation}
+\label{transform}
+\text{diag}(\lambda_1,\lambda_2) = UMU^\dag
+\end{equation}
+and find the angle $\theta$. What transformation on $x$ from $Mx=\lambda x$ is necessary to make it an eigenvector?
+}
+\end{enumerate}
+}
+
+\item{
+Let $\hat{A}$ be an arbitrary (not necessarily hermitian) operator acting in the space of functions. Prove $\hat{O} = i(\hat{A} - \hat{A}^\dag)$ is hermitian $(\hat{O}=\hat{O}^\dag)$.
+}
 
 }
 

@@ -60,7 +60,7 @@
 % Document information
 \title{\textbf{Quantum Mechanics I HW1}}
 \author{Diego Ramírez Milano (201214691)}
-\date{Febrero 7 de 2016}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -103,190 +103,29 @@ Where $N$ is the normalization factor and $\lambda = \sqrt{\frac{\hbar}{m\omega}
 
 \begin{enumerate}
 [label=\Large{\textbf{\arabic*.}}]
-\item
-{
+\item{
 Find the normalization factor $N$.
+}
 
-\begin{equation}
-\label{p1:1}
-\bigintssss_{\mathbb{R}}\Psi\Psi^*\dx = \bigintssss_{\mathbb{R}}e^{-iEt/\hbar}Ne^{-x^2/2\lambda^2}e^{iEt/\hbar}Ne^{-x^2/2\lambda^2}\dx = \bigintssss_{\mathbb{R}}N^2e^{-x^2/\lambda^2}\dx
-\end{equation}
+\item{
+Calculate the probability for the particle to be in the interval $[0,\infty]$.
+}
 
-Now we use the substitution
+\item{
+Calculate the expected values $\big<x\big>$, $\big<x^2\big>$, $\big<\hat{P}_x\big>$ and $\big<\hat{P}_x^2\big>$.
+}
 
-\begin{equation}
-\label{p1:2}
-\begin{split}
-u = \frac{x}{\lambda}\\
-\lambda\mathrm{d}u = \dx
-\end{split}
-\end{equation}
-
-\begin{equation}
-\label{p1:3}
-\begin{split}
-\lambda N^2\bigintssss_{\mathbb{R}}e^{-u^2}\mathrm{d}u = 1\\
-\lambda N^2\sqrt{\pi} = 1\\
-\boxed{N = \frac{1}{\sqrt{\lambda \sqrt{\pi}}} = \sqrt[4]{\frac{m\omega}{\hbar\pi}}}
-\end{split}
-\end{equation}
+\item{
+Find the eigenvalue $E$ in $\hat{H}\Psi = E\Psi$.
 }
 
 \item
 {
-Calculate the probability for the particle to be in the interval $[0,\infty]$
-
-\begin{equation}
-\label{p2:1}
-\bigintssss_0^{\infty}\Psi\Psi^*\dx = N^2\bigintssss_0^{\infty}e^{-x^2/\lambda^2}\dx
-\end{equation}
-
-Using same substitution as \eqref{p1:2} we get
-
-\begin{equation}
-\label{p2:2}
-\begin{split}
-\lambda N^2\bigintssss_0^{\infty}e^{-u^2}\dx = N^2\lambda\frac{\sqrt{\pi}}{2}\\
-\boxed{P = \frac{\lambda}{\lambda\sqrt{\pi}}\frac{\sqrt{\pi}}{2} = \frac{1}{2}}
-\end{split}
-\end{equation}
-}
-
-\item
-{
-Calculate the values $\big<x\big>$, $\big<x^2\big>$, $\big<\hat{P}_x\big>$ and $\big<\hat{P}_x^2\big>$.
-
-For $\big<x\big>$:
-\begin{equation}
-\label{p3:1}
-\big<x\big> = \bigintssss_{\mathbb{R}}x\Psi\Psi^*\dx = N^2\bigintssss_{\mathbb{R}}xe^{-x^2/\lambda^2}\dx
-\end{equation}
-
-Now we use the substitution
-
-\begin{equation}
-\label{p3:2}
-\begin{split}
-u = \frac{x^2}{\lambda^2}\\
-\mathrm{d}u = \frac{2x}{\lambda^2}\dx
-\end{split}
-\end{equation}
-
-\begin{equation}
-\label{p3:3}
-\begin{split}
-=& N^2\frac{\lambda^2}{2}\bigintssss_{\mathbb{R}}e^{-u}\mathrm{d}u = -N^2\frac{\lambda^2}{2}\left(e^{-u} \right)\\
-=&-\frac{\lambda}{2\sqrt{\pi}}e^{-x^2/\lambda^2}\bigg|_{-\infty}^{\infty}\\
-=& \boxed{-\frac{\lambda}{2\sqrt{\pi}}\left( 0 - 0\right) = 0}\\
-\end{split}
-\end{equation}
-
-For $\big<x^2\big>$:
-\begin{equation}
-\label{p3:4}
-\big<x^2\big> = \bigintssss_{\mathbb{R}}x^2\Psi\Psi^*\dx = N^2\bigintssss_{\mathbb{R}}x^2e^{-x^2/\lambda^2}\dx
-\end{equation}
-
-We take advantage now of help number 2 in equation \eqref{help2} to say:
-
-\begin{equation}
-\label{p3:5}
-\begin{split}
-N^2\bigintssss_{\mathbb{R}}x^2e^{-x^2/\lambda^2}\dx = N^2 \frac{\sqrt{\pi}\lambda^3}{2}\\
-\boxed{\big<x^2\big> = \frac{\lambda^2}{2} = \frac{\hbar}{2m\omega}}
-\end{split}
-\end{equation}
-
-For $\big<\hat{P}_x\big>$:
-
-\begin{equation}
-\label{p3:6}
-\begin{split}
-\big<\hat{P}_x\big> =& N^2\bigintssss_{\mathbb{R}}e^{-x^2/2\lambda^2}\left(-i\hbar \frac{\mathrm{d}}{\mathrm{d}x}e^{-x^2/2\lambda^2}\right)\dx\\
-=& \frac{N^2i\hbar}{\lambda^2}\bigintssss_{\mathbb{R}}xe^{-x^2/\lambda^2}\dx\\
-=& \boxed{\frac{N^2i\hbar}{\lambda^2}\big<x\big> = 0}
-\end{split}
-\end{equation}
-
-For $\big<\hat{P}_x^2\big>$:
-
-\begin{equation}
-\label{p3:7}
-\big<\hat{P}_x^2\big> = -\bigintssss_{\mathbb{R}}\hbar^2\frac{\mathrm{d}^2}{\mathrm{d}x^2}\Psi\Psi^*\dx = -N^2\hbar^2\bigintssss_{\mathbb{R}}e^{-x^2/2\lambda^2}\frac{\mathrm{d}^2}{\mathrm{d}x^2}e^{-x^2/2\lambda^2}\dx
-\end{equation}
-
-In a separate place we compute the derivatives
-
-\begin{equation}
-\label{deriv}
-\begin{split}
-\frac{\mathrm{d}}{\mathrm{d}x}e^{-x^2/2\lambda^2} =& -\frac{x}{\lambda}e^{-x^2/2\lambda^2}\\ 
-\frac{\mathrm{d}^2}{\mathrm{d}x^2}e^{-x^2/2\lambda^2} =& \left( \frac{x^2 - \lambda^2}{\lambda^4} \right)e^{-x^2/2\lambda^2}
-\end{split}
-\end{equation}
-
-Therefore using what we just computed we get:
-
-\begin{equation}
-\label{p3:8}
-\begin{split}
-\big<\hat{P}_x^2\big> =&  -N^2\hbar^2\bigintssss_{\mathbb{R}}e^{-x^2/2\lambda^2}\left( \frac{x^2 - \lambda^2}{\lambda^4} \right)e^{-x^2/2\lambda^2}\dx\\
-=& -\frac{\hbar^2}{\lambda^4}\left( \bigintssss_{\mathbb{R}}N^2x^2e^{-x^2/2\lambda^2}\dx - \bigintssss_{\mathbb{R}}N^2\lambda^2e^{-x^2/2\lambda^2}\dx\right)\\
-=& -\frac{\hbar^2}{\lambda^4}\left( \big<x^2\big> - \lambda^2  \right) = -\frac{\hbar^2}{\lambda^4}\left( \frac{\lambda^2}{2} - \lambda^2 \right)\\
-=& \boxed{\frac{\hbar^2}{2\lambda^2} = \frac{mw}{2}}
-\end{split}
-\end{equation}
-}
-
-\item
-{
-Find the eigenvalue $E$ in $\hat{H}\Psi = E\Psi$
-
-We now implement what is stated in equation \eqref{hamil} to the wave function, so we get
-
-\begin{equation}
-\label{p4:1}
-\begin{split}
-\hat{H}\Psi =& -\frac{\hbar^2}{2m}\frac{\mathrm{d}^2}{\mathrm{d}x^2}\Psi + \frac{1}{2}m\omega^2x^2\Psi\\
-=& -\frac{\hbar^2}{2m}e^{-iEt/\hbar}Ne^{-x^2/2\lambda^2}\left( \frac{x^2 - \lambda^2}{\lambda^4} \right) + \frac{1}{2}m\omega^2x^2e^{-iEt/\hbar}Ne^{-x^2/2\lambda^2}\\
-=& -\frac{\hbar^2}{2m}\Psi\left( \frac{x^2 - \lambda^2}{\lambda^4} \right) + \frac{1}{2}m\omega^2x^2\Psi\\
-=& \Psi\left( -\frac{\hbar^2}{2m}\left( \frac{x^2 - \lambda^2}{\lambda^4} \right) + \frac{1}{2}m\omega^2x^2 \right)
-\end{split}
-\end{equation}
-
-From here we can now solve for $E$:
-
-\begin{equation}
-\label{p4:2}
-\begin{split}
-E\Psi =& \Psi\left( -\frac{\hbar^2}{2m}\left( \frac{x^2 - \lambda^2}{\lambda^4} \right) + \frac{1}{2}m\omega^2x^2 \right)\\
-E =& \boxed{-\frac{\hbar^2}{2m}\left( \frac{x^2 - \lambda^2}{\lambda^4} \right) + \frac{1}{2}m\omega^2x^2}
-\end{split}
-\end{equation}
-
-Finally replacing $\lambda$ in equation \eqref{p4:2} we can simplify the expression to
-
-\begin{equation}
-\label{p4:3}
-\begin{split}
-E =& -\frac{\hbar^2m^2\omega^2x^2}{2m\hbar^2} + \frac{\hbar^2m\omega}{2m\hbar} + \frac{1}{2}m\omega^2x^2\\
-=& -\frac{1}{2}m\omega^2x^2 + \frac{\hbar\omega}{2} + \frac{1}{2}m\omega^2x^2 = \boxed{\frac{\hbar\omega}{2}}
-\end{split}
-\end{equation}
-}
-
-\item
-{
-Calculate the probability current $j_x$
+Calculate the probability current $j_x$.
 
 \begin{equation}
 \label{p5:1}
-\begin{split}
-j_x =& \frac{i\hbar}{2m}\left(\Psi \frac{\mathrm{d}}{\dx}\Psi^* - \Psi^*\frac{\mathrm{d}}{\dx}\Psi \right)\\
-=& \frac{i\hbar}{2m}\left(N^2e^{-x^2/2\lambda^2}\frac{\mathrm{d}}{\dx}e^{-x^2/2\lambda^2} - N^2e^{-x^2/2\lambda^2}\frac{\mathrm{d}}{\dx}e^{-x^2/2\lambda^2}\right)\\
-=& \frac{i\hbar N^2}{2m}e^{-x^2/2\lambda^2}\left( \frac{\mathrm{d}}{\dx}e^{-x^2/2\lambda^2} - \frac{\mathrm{d}}{\dx}e^{-x^2/2\lambda^2} \right)\\
-=&\ \boxed{0}
-\end{split}
+j_x = \frac{i\hbar}{2m}\left(\Psi \frac{\mathrm{d}}{\dx}\Psi^* - \Psi^*\frac{\mathrm{d}}{\dx}\Psi \right)
 \end{equation}
 }
 
